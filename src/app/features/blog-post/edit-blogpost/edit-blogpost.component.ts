@@ -62,7 +62,6 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
     });
   }
 
-
   onFormSubmit(): void {
     // Convert this model to Request Object
     if (this.model && this.id) {
@@ -88,6 +87,14 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
 
   }
 
+  openImageSelector(): void {
+    this.isImageSelectorVisible = true;
+  }
+
+  closeImageSelector() : void {
+    this.isImageSelectorVisible = false;
+  }
+
   onDelete(): void {
     if (this.id) {
       // call service and delete blogpost
@@ -100,11 +107,6 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
     }
   }
 
-
-
-
-
-
   ngOnDestroy(): void {
     this.routeSubscription?.unsubscribe();
     this.updateBlogPostSubscription?.unsubscribe();
@@ -112,7 +114,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
     this.deleteBlogPostSubscription?.unsubscribe();
 
 
-    }
+  }
 
 
 }
