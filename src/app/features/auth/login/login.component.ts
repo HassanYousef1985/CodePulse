@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginRequest } from '../models/login-request.model';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +11,20 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   model: LoginRequest;
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.model = {
       email: '',
       password: ''
     };
   }
 
-  onFormSubmit(): void {
-   console.log(this.model)
+  onFormSubmit() {
+    this.authService.login(this.model)
+    .subscribe({
+      next: (response) => {
+        console.log(response)
+
+      }
+    });
   }
 }
